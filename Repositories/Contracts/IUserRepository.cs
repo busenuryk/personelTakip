@@ -1,8 +1,10 @@
-﻿using Entities.Models;
+﻿using Entities.DataTransferObject;
+using Entities.Models;
 using Entities.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,10 +12,12 @@ namespace Repositories.Contracts
 {
     public interface IUserRepository : IRepositoryBase<User>
     {
-        Task<PagedList<User>> GetAllUserAsync(UserParameters userParameters, bool trackChanges);
-        Task<User> GetOneUserByIdAsync(int id, bool trackChanges);
-        void CreateOneUserAsync(User user);
-        void UpdateOneUserAsync(User user);
-        void DeleteOneUserAsync(User user);
+        Task<PagedList<User>> RGetAllUserAsync(UserParameters userParameters, bool trackChanges);
+        Task<User> RGetByIdAsync(Expression<Func<User, bool>> expression);
+        Task<UserDto> RGetByFilter(UserParameters userParameters);
+        Task<UserDto> RGetFilteredAllAsync(UserParameters userParameters, bool trackChange);
+        void RAddOneUserAsync(User user);
+        void RUpdateOneUserAsync(User user);
+        void RDeleteOneUserAsync(User user);
     }
 }

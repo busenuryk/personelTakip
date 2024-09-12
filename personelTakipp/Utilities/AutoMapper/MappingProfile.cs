@@ -9,9 +9,9 @@ namespace personelTakipp.Utilities.AutoMapper
         public MappingProfile()
         {
             //CreateMap<source, destination>();
-            CreateMap<UserDtoForUpdate, User>();
+            CreateMap<UserDtoForUpdate, User>().ReverseMap();
             CreateMap<User, UserDto>(); //Dto şeklinde bir nesneyi transfer edebiliriz
-            CreateMap<UserDtoForInsertion, User>();
+            CreateMap<UserDtoForInsertion, User>().ReverseMap();
         }
     }
 }

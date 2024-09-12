@@ -10,26 +10,31 @@ using System.Threading.Tasks;
 namespace Repositories.EfCore
 {
     //t refereans tipli bir ifade o yüzden where ile sadece ref tipli ifadelerin kullanılmasını
-    public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
+    public abstract class RepositoryBase<T>(RepositoryContext _context) : IRepositoryBase<T> where T : class
     {
-        protected readonly RepositoryContext _context;
+        public void Add(T entity) => _context.Set<T>().Add(entity);
 
-        protected RepositoryBase(RepositoryContext context)
+        public void Delete(T entity) => _context.Set<T>().Remove(entity);
+
+        public void Update(T entity) => _context.Set<T>().Update(entity);
+        public IQueryable<T> GetAll(bool trackChanges) => !trackChanges
+             ? _context.Set<T>().AsNoTracking()
+             : _context.Set<T>();
+
+        public T GetById(Expression<Func<T, bool>> expression)
         {
-            _context = context;
+            return _context.Set<T>().Find(expression);
+        }
+        public T GetByFilter(Expression<Func<T, bool>> expression)
+        {
+            return _context.Set<T>().Where(expression).FirstOrDefault();
+
         }
 
-        public void Add(T entity) => _context.Set<T>().Add(entity);
-        public void Delete(T entity) => _context.Set<T>().Remove(entity);
-        public void Update(T entity) => _context.Set<T>().Update(entity);
-        public IQueryable<T> GetAll(bool trackCahnges) => !trackCahnges
-            ? _context.Set<T>().AsNoTracking()
-            : _context.Set<T>();
-        public IQueryable<T> GetOneUser(Expression<Func<T, bool>> expression, bool trackChanges) =>
-            !trackChanges ?
-            _context.Set<T>().Where(expression).AsNoTracking()
-            : _context.Set<T>().Where(expression);
+        public IQueryable<T> GetFilteredAll(Expression<Func<T, bool>> expression, bool trackChanges) => !trackChanges
+        ? _context.Set<T>().Where(expression).AsNoTracking()
+        : _context.Set<T>().Where(expression);
 
     }
-    
+
 }

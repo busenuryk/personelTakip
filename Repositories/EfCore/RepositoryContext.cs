@@ -1,10 +1,5 @@
 ﻿using Entities.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Repositories.EfCore
 {
@@ -16,8 +11,8 @@ namespace Repositories.EfCore
 
         }
         //veritabanıdaki tablolarımız
-        public DbSet<User> Users { get; set; }
-        public DbSet<Jobs> Jobs { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<Jobs> Job { get; set; }
         public DbSet<Role> Role { get; set; }
         public DbSet<Department> Department { get; set; }
 

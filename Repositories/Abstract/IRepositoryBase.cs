@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
 
 namespace Repositories.Contracts
 {
@@ -17,7 +12,7 @@ namespace Repositories.Contracts
         IQueryable<T> GetAll(bool trackChanges); //listeleme -generic
         IQueryable<T> GetFilteredAll(Expression<Func<T, bool>> expression, bool trackChange); //filtreleme ile listeleme
         T GetById(Expression<Func<T, bool>> expression); //id ile getirme
-        T GetByFilter(Expression<Func<T, bool>> expression); //filtremelme ile bir kişi getirir
+        //T GetByFilter(Expression<Func<T, bool>> expression); //filtremelme ile bir kişi getirir
         void Add(T entity); //ekleme
         void Update(T entity); //güncelleme
         void Delete(T entity); //silme

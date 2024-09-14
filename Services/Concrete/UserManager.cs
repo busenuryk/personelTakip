@@ -35,6 +35,11 @@ namespace Services
             return (userDto, usersWithMetaData.MetaData);
         }
 
+        public Task<UserDto> SGetByFilterAsync(Expression<Func<UserDto, bool>> expression)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<UserDto> SGetByIdAsync(int id)
         {
             var entity = await GetOneUserAndCheckExist(id, false);

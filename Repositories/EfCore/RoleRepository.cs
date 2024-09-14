@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Entities.Models;
+using Repositories.Contracts;
 
 namespace Repositories.EfCore
 {
-    public class RoleRepository
+    public class RoleRepository : RepositoryBase<Role>, IRoleRepository
     {
+        public RoleRepository(RepositoryContext _context) : base(_context)
+        {
+        }
     }
 }

@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Entities.Models;
+using Repositories.Contracts;
 
 namespace Repositories.EfCore
 {
-    public class DepartmentRepository
+    public class DepartmentRepository : IRepositoryBase<Department>, IDepartmentRepository
     {
+        private RepositoryContext context;
+
+        public DepartmentRepository(RepositoryContext context)
+        {
+            this.context = context;
+        }
     }
 }

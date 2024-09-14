@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.Contracts
+namespace DataAccess.EfCore.NewFolder
 {
-    public interface IDepartmentService
+    internal class RoleConfig
     {
     }
 }

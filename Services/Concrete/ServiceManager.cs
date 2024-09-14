@@ -26,5 +26,13 @@ namespace Services
 
 
         }
+
+        public IUserService UserService => throw new NotImplementedException();
+
+        public IJobsService jobsService => throw new NotImplementedException();
+
+        public IDepartmentService departmentService => throw new NotImplementedException();
+
+        public IRoleService roleService => throw new NotImplementedException();
     }   
 }

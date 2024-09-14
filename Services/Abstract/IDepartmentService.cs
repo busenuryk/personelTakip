@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repositories.Contracts
+namespace Services.Contracts
 {
-    public interface IRoleRepository : IRepositoryBase<Role>
+    public interface IDepartmentService
     {
+
     }
 }
